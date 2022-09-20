@@ -2,7 +2,7 @@
 
 Basically, usual Unicode characters are displayed as-is for Markdown processing.
 But some Unicode characters are automatically converted to Emoji in GitHub markdown
-(e.g. `↔` → ↔).
+(e.g. `↔` is converted to ↔).
 
 Thw following list can be used to determine how each character is diplayed in GitHub Markdown.
 

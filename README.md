@@ -2,11 +2,15 @@
 
 Basically, usual Unicode characters are displayed as-is for Markdown processing.
 But some Unicode characters are automatically converted to Emoji in GitHub markdown
-(e.g. `↔` is converted to ↔).
+(e.g. `▶` (U+25B6) is converted to ▶).
 
-Thw following list can be used to determine how each character is diplayed in GitHub Markdown.
+> See Wikipedia for Emoji-Unicode mapping as below.
+> 
+> https://en.wikipedia.org/wiki/Emoji#In_Unicode
 
-| 0000-FFFF | 10000-1FFFF |
+The following lists can be used to determine how each character is diplayed in GitHub Markdown.
+
+| 00000-0FFFF | 10000-1FFFF |
 | :-: | :-: |
 | [0000-0FFF](0000.md) | [10000-10FFF](10000.md) |
 | [1000-1FFF](1000.md) | [11000-11FFF](11000.md) |

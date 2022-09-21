@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 # Genarate Markdown output list for Unicode characters
 
 N_COL = 16
@@ -22,7 +24,7 @@ def generate_char_list(f, code_from, code_to)
       f.puts "> U+D800 to U+DFFF are reserved for surrogate pairs."
       return
     else
-      f.puts sprintf("| %04X |", codes[0]) +
+      f.puts sprintf("| <span id=\"%04X\">%04X</span> |", codes[0], codes[0]) +
              codes.inject('') {|row, c|
                c = c.chr(Encoding::UTF_8)
                row + sprintf(" `%s`<br>%s |", c, c)

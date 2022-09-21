@@ -24,10 +24,11 @@ def generate_char_list(f, code_from, code_to)
       f.puts "> U+D800 to U+DFFF are reserved for surrogate pairs."
       return
     else
-      f.puts sprintf("| <span id=\"%04X\">%04X</span> |", codes[0], codes[0]) +
-             codes.inject('') {|row, c|
-               c = c.chr(Encoding::UTF_8)
-               row + sprintf(" `%s`<br>%s |", c, c)
+      hex = sprintf("%03X", codes[0] / 16)
+      f.puts "| <span id=\"#{hex}x\">#{hex}0</span> |" +
+             codes.inject('') {|row, code|
+               chr = code.chr(Encoding::UTF_8)
+               row + sprintf(" <span id=\"%04X\">`%s`</span><br>%s |", code, chr, chr)
              }
     end
   end

@@ -30,27 +30,26 @@ The following lists can be used to determine how each character is diplayed in G
 | [E000-EFFF](lists/E000.md) | [1E000-1EFFF](lists/1E000.md) |
 | [F000-FFFF](lists/F000.md) | [1F000-1FFFF](lists/1F000.md) |
 
-## Controling text and emoji outputs
+## Controlling text and emoji outputs
 
-Unicode characters which are associated with emojis are basically displayed as emoji icons in GitHub Markdown. Most characters higher than U+1000 which has emoji representations are displayed as emoji as default (e.g. `☀`(U+2600) is displayed as ☀).
+Unicode characters which are associated with emojis are basically displayed as emojis in GitHub Markdown. Most characters higher than U+1000 which has emoji representations are displayed as emoji as default (e.g. `☀`(U+2600) is displayed as ☀).
 
-But sometimes it would cause problems. Suppose you want to output `A ↔ B` as normal text. But `↔` is displayed as an emoji icon as default.
+But sometimes it would cause problems. Suppose you want to output `A ↔ B` as normal text. But `↔` is displayed as an emoji (e.g. A ↔ B).
 
-You can display normal texts using VS15(U+FE0E) for characters which display as emoji as default.
+You can display them as normal text using VS15(U+FE0E) for characters which display as emoji as default.
 
 | Example | Output |
 | - | - |
 | `A ↔ B` | A ↔ B |
 | `A ↔&#xFE0E; B;` | A ↔&#xFE0E; B |
 
-On the other hand, you can display emoji icons using VS16(U+FE0F) for characters which display as text as default. For example, `©`(U+00A9) and `®`(U+00AF) are displayed as text as default. But you can change them to emojis as follows.
+On the other hand, you can display emoji icons using VS16(U+FE0F) for characters which display as text as default. For example, `©`(U+00A9) and `®`(U+00AF) are usually displayed as text. But you can change them to emojis as follows.
 
 | Example | Output |
 | - | - |
 | `© ®` | © ® |
 | `©&#xFE0F; ®&#xFE0F;` | ©&#xFE0F; ®&#xFE0F; |
 
-> VS15(U+FE0E) and VS16(U+FE16) are called _validation selectors_ and they are are used as switches for a character to display as text or emoji. See Wikipedia as below for details.
-> 
-> https://en.wikipedia.org/wiki/Variation_Selectors_(Unicode_block)
- 
+VS15(U+FE0E) and VS16(U+FE16) are called _variation selectors_ and are used as switches for a character to display as text or emoji. See Wikipedia for details.
+
+https://en.wikipedia.org/wiki/Variation_Selectors_(Unicode_block)

@@ -17,9 +17,9 @@ def output_links(f, code_from)
     for m in 0..15
       base = (16 * n + m) * 0x1000
       if base == code_from
-        f.printf " %X%X\*\*\* |", n, m
+        f.printf " %X%X\\*\\*\\* |", n, m
       else
-        f.printf " [%X%X\*\*\*](%04X.md) |", n, m, (16 * n + m) * 0x1000
+        f.printf " [%X%X\\*\\*\\*](%04X.md) |", n, m, (16 * n + m) * 0x1000
       end
     end
     f.puts "<br>|" if n == 0

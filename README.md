@@ -1,6 +1,7 @@
 # Markdown output check for Unicode characters
 
-Basically, usual Unicode characters are displayed as-is for Markdown processing.
+Unicode characters are basically displayed as-is for Markdown processing.
+
 But some Unicode characters are automatically converted to Emoji in GitHub markdown
 (e.g. `▶` (U+25B6) is converted to ▶).
 
@@ -29,54 +30,27 @@ The following lists can be used to determine how each character is diplayed in G
 | [E000-EFFF](lists/E000.md) | [1E000-1EFFF](lists/1E000.md) |
 | [F000-FFFF](lists/F000.md) | [1F000-1FFFF](lists/1F000.md) |
 
+## Controling text and emoji outputs
 
-|  \*0\*\*\* | \*1\*\*\* | \*2\*\*\* | \*3\*\*\* | \*4\*\*\* | \*5\*\*\* | \*6\*\*\* | \*7\*\*\* | \*8\*\*\* | \*9\*\*\* | \*A\*\*\* | \*B\*\*\* | \*C\*\*\* | \*D\*\*\* | \*E\*\*\* | \*F\*\*\* |
-| - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
+Unicode characters which are associated with emojis are basically displayed as emoji icons in GitHub Markdown. Most characters higher than U+1000 which has emoji representations are displayed as emoji as default (e.g. `☀`(U+2600) is displayed as ☀).
 
+But sometimes it would cause problems. Suppose you want to output `A ↔ B` as normal text. But `↔` is displayed as an emoji icon as default.
 
+You can display normal texts using VS15(U+FE0E) for characters which display as emoji as default.
 
+| Example | Output |
+| - | - |
+| `A ↔ B` | A ↔ B |
+| `A ↔&#xFE0E; B;` | A ↔&#xFE0E; B |
 
-| \*0\*\*\* | \*1\*\*\* | \*2\*\*\* | \*3\*\*\* | \*4\*\*\* | \*5\*\*\* | \*6\*\*\* | \*7\*\*\* | \*8\*\*\* | \*9\*\*\* | \*A\*\*\* | \*B\*\*\* | \*C\*\*\* | \*D\*\*\* | \*E\*\*\* | \*F\*\*\* |
-| -: | -: | -: | -: | -: | -: | -: | -: | -: | -: | -: | -: | -: | -: | -: | -: |
-| 0\*\*\* | 1\*\*\* | 2\*\*\* | 3\*\*\* | 4\*\*\* | 5\*\*\* | 6\*\*\* | 7\*\*\* | 8\*\*\* | 9\*\*\* | A\*\*\* | B\*\*\* | C\*\*\* | D\*\*\* | E\*\*\* | F\*\*\* |
-| 10\*\*\* | 11\*\*\* | 12\*\*\* | 13\*\*\* | 14\*\*\* | 15\*\*\* | 16\*\*\* | 17\*\*\* | 18\*\*\* | 19\*\*\* | 1A\*\*\* | 1B\*\*\* | 1C\*\*\* | 1D\*\*\* | 1E\*\*\* | 1F\*\*\* |
+On the other hand, you can display emoji icons using VS16(U+FE0F) for characters which display as text as default. For example, `©`(U+00A9) and `®`(U+00AF) are displayed as text as default. But you can change them to emojis as follows.
 
+| Example | Output |
+| - | - |
+| `© ®` | © ® |
+| `©&#xFE0F; ®&#xFE0F;` | ©&#xFE0F; ®&#xFE0F; |
 
-
-
-[00\*\*\*](#)
-[01\*\*\*](#)
-[02\*\*\*](#)
-[03\*\*\*](#)
-[04\*\*\*](#)
-[05\*\*\*](#)
-[06\*\*\*](#)
-[07\*\*\*](#)
-[08\*\*\*](#)
-[09\*\*\*](#)
-[0A\*\*\*](#)
-[0B\*\*\*](#)
-[0C\*\*\*](#)
-[0D\*\*\*](#)
-[0E\*\*\*](#)
-[0F\*\*\*](#)
-<br>
-[10\*\*\*](#)
-[11\*\*\*](#)
-[12\*\*\*](#)
-[13\*\*\*](#)
-[14\*\*\*](#)
-[15\*\*\*](#)
-[16\*\*\*](#)
-[17\*\*\*](#)
-[18\*\*\*](#)
-[19\*\*\*](#)
-[1A\*\*\*](#)
-[1B\*\*\*](#)
-[1C\*\*\*](#)
-[1D\*\*\*](#)
-[1E\*\*\*](#)
-[1F\*\*\*](#)
-
-
-[1\*\*\*](#) [2\*\*\*]() [3\*\*\* | 4\*\*\* | 5\*\*\* | 6\*\*\* | 7\*\*\* | 8\*\*\* | 9\*\*\* | A\*\*\* | B\*\*\* | C\*\*\* | D\*\*\* | E\*\*\* | F\*\*\* |
+> VS15(U+FE0E) and VS16(U+FE16) are called _validation selectors_ and they are are used as switches for a character to display as text or emoji. See Wikipedia as below for details.
+> 
+> https://en.wikipedia.org/wiki/Variation_Selectors_(Unicode_block)
+ 

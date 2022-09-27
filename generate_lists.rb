@@ -25,12 +25,31 @@ def output_links(f, code_from)
   f.puts
 end
 
+def output_code_span(c)
+  case c
+  when "`"
+    "`` ` ``"
+  when "|"
+    "`\\|`"     # backslash required because it is inside of a cell
+  else
+    "`#{c}`"
+  end
+end
+
+def is_ascii_punctuation(code)
+  case code
+  when 0x21..0x2F, 0x3A..0x40, 0x5B..0x60, 0x7B..0x7E
+    true
+  else
+    false
+  end
+end
+
 def output_cell(code)
-  chr = code.chr(Encoding::UTF_8)
-  code_span = chr == "`" ?  "`` ` ``" : "`#{chr}`" 
-  chr = "\\#{chr}" if chr == "\\" || chr == "`"
-  sprintf(" <span id=\"%04X\">%s</span><br>%s<br>%s\uFE0E<br>%s\uFE0F |",
-          code, code_span, chr, chr, chr)
+  c = code.chr(Encoding::UTF_8)
+  code_span = "<span id=\"#{sprintf "%04X", code}\">#{output_code_span c}</span>"
+  c = "\\#{c}" if is_ascii_punctuation(code)
+  " #{code_span}<br>#{c}<br>#{c}\uFE0E<br>#{c}\uFE0F |"
 end
 
 def generate_char_list(f, code_from, code_to)

@@ -34,7 +34,7 @@ def generate_char_list(f, code_from, code_to)
   output_links f, code_base
   output_hr f
 
-  f.puts "`code`: as code span, &nbsp; **none**: character only, &nbsp; **txt**: character + VS15(U+FE0E), &nbsp; **emo**: character + VS16(U+FE0F)"
+  f.puts "`c`: as code span, &nbsp; **c**: character only, &nbsp; **15**: character + VS15(U+FE0E), &nbsp; **16**: character + VS16(U+FE0F)"
   f.puts
 
   if code_from < 0x20
@@ -44,7 +44,7 @@ def generate_char_list(f, code_from, code_to)
   end
 
   f.puts (0..15).inject("| U+ | ") {|row, col|
-    row + sprintf(" %X<br>`code`<br>none<br>txt<br>emo |", col)
+    row + sprintf(" %X<br>`c`<br>c<br>15<br>16 |", col)
   }
   f.puts (0..N_COL).inject('|') {|row, _| row + ' :-: |' }
   all_codes = (code_from..code_to).to_a
